@@ -1,4 +1,4 @@
 # InfixToPostfix
-An infix to postfix expression converter and evaluator.
+### An infix to postfix expression converter and evaluator.
 
-## The algorithm is implemented using a stack.
+#### The algorithm is implemented using a stack.
