@@ -3,7 +3,6 @@ package DS.EvaluatorPostfix;
 import java.util.Stack;
 
 public class InfixToPostfix {
-
     //Returns true if the given character is an operator.
     static boolean isOperator(char character) {
         switch (character) {
@@ -83,7 +82,7 @@ public class InfixToPostfix {
 
         //Traversing the expression array.
         for (String element : infixExpArray) {
-            if (isOperand(element) || element.equals("(")) {
+            if (isOperand(element)) {
                 result.append(element).append(" ");
             } else if (isOperator(element.charAt(0)) && stack.isEmpty()) {
                 stack.push(element);
@@ -95,6 +94,8 @@ public class InfixToPostfix {
                     stack.pop();
                 }
 
+                stack.push(element);
+            } else if (element.equals("(")) {
                 stack.push(element);
             } else if (element.equals(")")) {
                 while (!stack.isEmpty() && !stack.peek().equals("(")) {
