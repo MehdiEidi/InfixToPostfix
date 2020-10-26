@@ -1,4 +1,4 @@
-package DS.EvaluatorPostfix;
+package DS.PostfixEvaluator;
 
 import java.util.Stack;
 
