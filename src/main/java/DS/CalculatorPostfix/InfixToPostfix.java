@@ -5,7 +5,7 @@ import java.util.Stack;
 public class InfixToPostfix {
 
     //Returns true if the given character is an operator.
-    private boolean isOperator(char character) {
+     static boolean isOperator(char character) {
         switch (character) {
             case '+':
             case '-':
@@ -18,39 +18,39 @@ public class InfixToPostfix {
         }
     }
 
-    private boolean isOperatorS(String str) {
-        switch (str) {
-            case "+":
-            case "-":
-            case "*":
-            case "/":
-            case "^":
-                return true;
-            default:
-                return false;
-        }
-    }
+//    private boolean isOperatorS(String str) {
+//        switch (str) {
+//            case "+":
+//            case "-":
+//            case "*":
+//            case "/":
+//            case "^":
+//                return true;
+//            default:
+//                return false;
+//        }
+//    }
 
     //Returns true if the given character is an operand
-    private boolean isOperand(char character) {
-        switch (character) {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
-                return true;
-            default:
-                return false;
-        }
-    }
+//    private boolean isOperand(char character) {
+//        switch (character) {
+//            case '0':
+//            case '1':
+//            case '2':
+//            case '3':
+//            case '4':
+//            case '5':
+//            case '6':
+//            case '7':
+//            case '8':
+//            case '9':
+//                return true;
+//            default:
+//                return false;
+//        }
+//    }
 
-    public static boolean isOperandS(String str) {
+     static boolean isOperand(String str) {
         return str.matches("-?\\d+(\\.\\d+)?");
 
     }
@@ -125,26 +125,14 @@ public class InfixToPostfix {
         String[] infixExpArray = convertToArray(infixExpression);
         //Traversing the given string.
         for (String element : infixExpArray) {
-            //If the character is an operand we append it to the result string.
-            //else if it is an operator and the stack is empty, we push it to the stack.
-            //else if it is an operator and stack is not empty and the top operator in stack has lower precedence, we push
-            //the character to the stack.
-            //else if it is an operator and stack is not empty and the top operator in stack has higher precedence,
-            //while the stack is not empty and the top operator in the stack has higher precedence than the character or they have
-            //the same precedence, we append the top operator of the stack into the result and pop it from the stack. Then
-            //we push the character in the expression to the stack.
-            //else if the character is an opening bracket, we push it to the stack.
-            //else if the character is a closing bracket, while the stack is not empty and we haven't reached an opening
-            //bracket, we append everything to the result string and pop them from the stack. Then we pop the opening bracket
-            //from the stack.
-            if (isOperandS(element)) {
+            if (isOperand(element)) {
                 result.append(element).append(" ");
 
-            } else if (isOperatorS(element) && stack.isEmpty()) {
+            } else if (isOperator(element.charAt(0)) && stack.isEmpty()) {
                 stack.push(element);
-            } else if (isOperatorS(element) && hasHigherPrecedence(element.charAt(0), stack.peek().charAt(0))) {
+            } else if (isOperator(element.charAt(0)) && hasHigherPrecedence(element.charAt(0), stack.peek().charAt(0))) {
                 stack.push(element);
-            } else if (isOperatorS(element) && !hasHigherPrecedence(element.charAt(0), stack.peek().charAt(0))) {
+            } else if (isOperator(element.charAt(0)) && !hasHigherPrecedence(element.charAt(0), stack.peek().charAt(0))) {
                 while (!stack.isEmpty() && (hasHigherPrecedence(stack.peek().charAt(0), element.charAt(0)) || hasSamePrecedence(element.charAt(0), stack.peek().charAt(0)))) {
                     result.append(stack.peek()).append(" ");
                     stack.pop();
