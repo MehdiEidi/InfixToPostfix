@@ -7,7 +7,7 @@ public class Calculator {
     public static void main(String[] args) {
         InfixToPostfix a = new InfixToPostfix();
 
-        System.out.println(a.infixToPostfix("1*2^3/4-5*6^(8-9)"));
+        System.out.println(a.infixToPostfix("4*((2+16)/3)-2^23^4"));
 
     }
 }
