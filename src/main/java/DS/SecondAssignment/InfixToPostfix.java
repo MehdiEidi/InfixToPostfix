@@ -1,4 +1,4 @@
-package DS.PostfixEvaluator;
+package DS.SecondAssignment;
 
 import java.util.Stack;
 
@@ -44,7 +44,7 @@ public class InfixToPostfix {
         int arrayIndex = 0;
 
         //Traversing the expression.
-        for(int i = 0; i < expression.length(); i++) {
+        for (int i = 0; i < expression.length(); i++) {
             if (i == expression.length() - 1) {
                 expressionArray[arrayIndex++] = String.valueOf(expression.charAt(i));
             } else if (expression.charAt(i) >= '0' && expression.charAt(i) <= '9') {
@@ -53,7 +53,7 @@ public class InfixToPostfix {
                 temp.append(expression.charAt(i));
 
                 int j = i + 1;
-                while (expression.charAt(j) >= '0' && expression.charAt(j) <= '9') {
+                while ((j < expression.length()) && (expression.charAt(j) >= '0' && expression.charAt(j) <= '9')) {
                     temp.append(expression.charAt(j++));
                     i++;
                 }
