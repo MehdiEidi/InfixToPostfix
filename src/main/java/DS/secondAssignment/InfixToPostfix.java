@@ -1,4 +1,4 @@
-package DS.SecondAssignment;
+package DS.secondAssignment;
 
 import java.util.Stack;
 
